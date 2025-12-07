@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전문 트레이너 프로필 - 김민수</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Noto Sans KR) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #84cc16; /* Lime-500 */
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#84cc16', // Lime 500
+                            dark: '#65a30d',    // Lime 600
+                            light: '#bef264'    // Lime 300
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-zinc-950 text-white antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-black text-brand tracking-tighter">MINSU.FIT</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="hover:text-brand transition-colors px-3 py-2 rounded-md text-sm font-medium">소개</a>
+                        <a href="#program" class="hover:text-brand transition-colors px-3 py-2 rounded-md text-sm font-medium">프로그램</a>
+                        <a href="#reviews" class="hover:text-brand transition-colors px-3 py-2 rounded-md text-sm font-medium">회원후기</a>
+                        <a href="#contact" class="bg-brand text-zinc-950 hover:bg-brand-light px-4 py-2 rounded-full text-sm font-bold transition-colors">상담 문의</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-gray-400 hover:text-white p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-b border-zinc-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="text-gray-300 hover:text-brand block px-3 py-2 rounded-md text-base font-medium">소개</a>
+                <a href="#program" class="text-gray-300 hover:text-brand block px-3 py-2 rounded-md text-base font-medium">프로그램</a>
+                <a href="#reviews" class="text-gray-300 hover:text-brand block px-3 py-2 rounded-md text-base font-medium">회원후기</a>
+                <a href="#contact" class="text-brand font-bold block px-3 py-2 rounded-md text-base">상담 문의</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- Background Image Placeholder (Dark overlay) -->
+            <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-zinc-900/40 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" 
+                 alt="Gym Background" 
+                 class="w-full h-full object-cover opacity-50">
+        </div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+            <div class="w-full md:w-1/2 fade-in">
+                <div class="inline-block px-4 py-1 mb-4 rounded-full border border-brand/30 bg-brand/10 text-brand text-sm font-bold tracking-wider">
+                    전문 퍼스널 트레이너
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-6">
+                    당신의 한계를<br>
+                    <span class="text-brand">디자인하다.</span>
+                </h1>
+                <p class="text-lg text-gray-400 mb-8 leading-relaxed max-w-lg">
+                    단순한 체중 감량이 아닌, 지속 가능한 라이프스타일의 변화를 만듭니다.<br>
+                    체계적인 데이터 분석과 맞춤형 솔루션으로 당신의 목표를 달성하세요.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="px-8 py-4 bg-brand text-zinc-950 font-bold rounded-lg text-center hover:bg-brand-light transition-all transform hover:-translate-y-1 shadow-[0_0_20px_rgba(132,204,22,0.4)]">
+                        무료 체험 신청하기
+                    </a>
+                    <a href="#program" class="px-8 py-4 border border-zinc-700 text-white font-bold rounded-lg text-center hover:bg-zinc-800 transition-all">
+                        프로그램 보기
+                    </a>
+                </div>
+                
+                <!-- Stats -->
+                <div class="mt-12 grid grid-cols-3 gap-8 border-t border-zinc-800 pt-8">
+                    <div>
+                        <div class="text-3xl font-black text-white">7년+</div>
+                        <div class="text-sm text-gray-500 mt-1">트레이닝 경력</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-black text-white">500명+</div>
+                        <div class="text-sm text-gray-500 mt-1">누적 회원수</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-black text-white">98%</div>
+                        <div class="text-sm text-gray-500 mt-1">재등록률</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trainer Image Card -->
+            <div class="w-full md:w-1/2 mt-12 md:mt-0 flex justify-center md:justify-end fade-in delay-200">
+                <div class="relative w-80 h-[500px] md:w-96 md:h-[600px] rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-2xl">
+                    <!-- Placeholder for Trainer Image -->
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop" 
+                         alt="Trainer Profile" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent p-6">
+                        <h3 class="text-2xl font-bold text-white">김민수 코치</h3>
+                        <p class="text-brand font-medium">대표 트레이너 / 스포츠영양학 석사</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Certificates Section -->
+    <section id="about" class="py-20 bg-zinc-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+                <div class="fade-in">
+                    <h2 class="text-sm font-bold text-brand uppercase tracking-widest mb-2">ABOUT ME</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">"운동은 고통이 아니라<br>나를 사랑하는 과정입니다."</h3>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        안녕하세요, 트레이너 김민수입니다. 저는 과거 심각한 허리 부상을 겪으며 재활 운동을 시작했고, 그 과정에서 올바른 움직임의 중요성을 깨달았습니다.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        무작정 무거운 무게를 드는 것이 아니라, 개개인의 체형과 가동 범위를 고려한 <strong>'과학적인 트레이닝'</strong>을 지향합니다. 여러분이 평생 지속할 수 있는 건강한 습관을 만들어 드리겠습니다.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 p-4 bg-zinc-950 rounded-lg border border-zinc-800">
+                            <div class="p-2 bg-brand/10 rounded-full text-brand">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">생활스포츠지도사 2급 (보디빌딩)</h4>
+                                <p class="text-sm text-gray-500">문화체육관광부</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 p-4 bg-zinc-950 rounded-lg border border-zinc-800">
+                            <div class="p-2 bg-brand/10 rounded-full text-brand">
+                                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">NSCA-CPT (공인 퍼스널 트레이너)</h4>
+                                <p class="text-sm text-gray-500">미국체력관리학회</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 p-4 bg-zinc-950 rounded-lg border border-zinc-800">
+                            <div class="p-2 bg-brand/10 rounded-full text-brand">
+                                <i data-lucide="activity" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">CES (교정 운동 전문가)</h4>
+                                <p class="text-sm text-gray-500">NASM (미국스포츠의학회)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 fade-in delay-100">
+                    <div class="space-y-4 mt-8">
+                        <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=2069&auto=format&fit=crop" class="rounded-xl shadow-lg w-full h-48 object-cover opacity-80 hover:opacity-100 transition-opacity" alt="Training 1">
+                        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=2070&auto=format&fit=crop" class="rounded-xl shadow-lg w-full h-64 object-cover opacity-80 hover:opacity-100 transition-opacity" alt="Training 2">
+                    </div>
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1574680096141-1cddd32e24d7?q=80&w=2070&auto=format&fit=crop" class="rounded-xl shadow-lg w-full h-64 object-cover opacity-80 hover:opacity-100 transition-opacity" alt="Training 3">
+                        <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?q=80&w=2070&auto=format&fit=crop" class="rounded-xl shadow-lg w-full h-48 object-cover opacity-80 hover:opacity-100 transition-opacity" alt="Training 4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="program" class="py-20 bg-zinc-950">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-sm font-bold text-brand uppercase tracking-widest mb-2">PROGRAMS</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white">맞춤형 트레이닝 솔루션</h3>
+                <p class="text-gray-400 mt-4">목적에 맞는 최적의 커리큘럼을 제공합니다.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Program 1 -->
+                <div class="group bg-zinc-900 border border-zinc-800 p-8 rounded-2xl hover:border-brand transition-colors duration-300 fade-in">
+                    <div class="w-14 h-14 bg-zinc-950 rounded-xl flex items-center justify-center text-brand mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="dumbbell" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">근력 증가 & 바디프로필</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        정확한 고립과 자극을 통해 근육량을 효과적으로 증가시킵니다. 체계적인 식단 관리와 함께 인생 최고의 몸을 만들어 드립니다.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand mr-2"></i> 부위별 타겟 트레이닝</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand mr-2"></i> 단계별 식단 플랜 제공</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand mr-2"></i> 바디프로필 촬영 서포트</li>
+                    </ul>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="group bg-zinc-900 border border-zinc-800 p-8 rounded-2xl hover:border-brand transition-colors duration-300 fade-in delay-100">
+                    <div class="w-14 h-14 bg-zinc-950 rounded-xl flex items-center justify-center text-brand mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="scale" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">다이어트 & 체형관리</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        무리한 굶기는 그만! 기초대사량을 높이고 요요 없는 건강한 감량을 목표로 합니다. 일상 속에서 유지 가능한 루틴을 설계합니다.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand mr-2"></i> 인바디 기반 데이터 분석</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand mr-2"></i> 순환 운동 및 유산소 병행</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand mr-2"></i> 데일리 식단 피드백</li>
+                    </ul>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="group bg-zinc-900 border border-zinc-800 p-8 rounded-2xl hover:border-brand transition-colors duration-300 fade-in delay-200">
+                    <div class="w-14 h-14 bg-zinc-950 rounded-xl flex items-center justify-center text-brand mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="heart-pulse" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">재활 & 체형 교정</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        거북목, 라운드숄더, 허리 통증 등 불균형한 신체를 바로잡습니다. 통증의 원인을 파악하고 기능적인 움직임을 회복합니다.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand mr-2"></i> 체형 불균형 정밀 평가</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand mr-2"></i> 근막 이완 및 스트레칭</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand mr-2"></i> 코어 강화 중심 트레이닝</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-20 bg-zinc-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center fade-in">회원님들의 리얼 후기</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Review Card 1 -->
+                <div class="bg-zinc-950 p-6 rounded-xl border border-zinc-800 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <span class="text-gray-500 text-xs ml-2">2023.10.15</span>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        "처음엔 헬스장이 무서웠는데 김민수 쌤 덕분에 운동이 재밌어졌어요! 3개월 만에 체지방 8kg 감량하고 바디프로필 준비 중입니다. 식단 강박 없이 건강하게 뺄 수 있게 도와주셔서 감사합니다."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-xs font-bold text-white">이OO</div>
+                        <span class="text-xs text-gray-500 ml-2">30대 직장인 / 다이어트 프로그램</span>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="bg-zinc-950 p-6 rounded-xl border border-zinc-800 fade-in delay-100">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <span class="text-gray-500 text-xs ml-2">2023.11.02</span>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        "허리 디스크 때문에 일상생활이 힘들었는데, 재활 PT 받고 통증이 거의 사라졌습니다. 단순히 운동만 시키는 게 아니라 평소 자세까지 꼼꼼하게 봐주시는 게 정말 좋았습니다."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-xs font-bold text-white">박OO</div>
+                        <span class="text-xs text-gray-500 ml-2">40대 자영업 / 재활 교정</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Contact -->
+    <section id="contact" class="py-20 bg-brand text-zinc-900 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10 fade-in">
+            <h2 class="text-4xl md:text-5xl font-black mb-6">지금이 바로 시작할 때입니다.</h2>
+            <p class="text-lg md:text-xl font-medium mb-10 text-zinc-800">
+                혼자 고민하지 마세요. 목표 달성을 위한 가장 빠른 길을 안내해 드립니다.<br>
+                지금 문의하시면 <span class="underline decoration-zinc-900 decoration-4">1회 무료 체험권</span>을 드립니다.
+            </p>
+            
+            <div class="bg-white p-8 rounded-2xl shadow-xl max-w-lg mx-auto">
+                <form class="space-y-4" onsubmit="event.preventDefault(); alert('문의가 접수되었습니다!');">
+                    <div>
+                        <input type="text" placeholder="이름" class="w-full p-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand border-none">
+                    </div>
+                    <div>
+                        <input type="tel" placeholder="연락처 (010-0000-0000)" class="w-full p-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand border-none">
+                    </div>
+                    <div>
+                        <textarea placeholder="운동 목적이나 궁금한 점을 적어주세요." rows="3" class="w-full p-3 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand border-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-zinc-900 text-white font-bold rounded-lg hover:bg-zinc-800 transition-colors shadow-lg">
+                        무료 상담 신청하기
+                    </button>
+                </form>
+            </div>
+            
+            <div class="mt-8 flex justify-center space-x-6">
+                <a href="#" class="flex items-center font-bold hover:text-white transition-colors">
+                    <i data-lucide="instagram" class="w-5 h-5 mr-2"></i> @minsu_fit
+                </a>
+                <a href="#" class="flex items-center font-bold hover:text-white transition-colors">
+                    <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i> 카카오톡 오픈채팅
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-950 py-8 border-t border-zinc-900">
+        <div class="max-w-6xl mx-auto px-4 text-center text-gray-600 text-sm">
+            <p>&copy; 2024 Personal Trainer Minsu Kim. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Init Scripts -->
+    <script>
+        // Icons
+        lucide.createIcons();
+
+        // Simple Intersection Observer for Fade-in animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
